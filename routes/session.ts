@@ -10,8 +10,8 @@ sessionRouter.get("/", async function (req, res, next) {
   if (!tokenHeader) {
     res.send(401, "lgc token not found");
   }
-  let login = sessionManager.handleLogin(tokenHeader);
-  return res.send();
+  let login = sessionManager.getSessionInfo(tokenHeader);
+  return res.send(login);
 });
 
 export default sessionRouter;
