@@ -12,7 +12,7 @@
 FROM node:16.16.0-alpine as build
 WORKDIR /usr/src/app
 COPY . .
-RUN npm ci --omit=dev
+RUN npm ci
 RUN npx tsc
 
 FROM build as publish
