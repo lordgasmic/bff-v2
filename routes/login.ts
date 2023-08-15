@@ -1,8 +1,11 @@
 import fetch from "node-fetch";
-import constants from "../constsants.js";
 import express from "express";
+import constants from "../constsants.js";
+import { SessionManager } from "../services/session-manager.js";
+import { LoginResponseFull } from "../models/LoginResponseFull";
 
 const loginRouter = express.Router();
+const sessionManager = SessionManager.Instance;
 
 /* GET users listing. */
 loginRouter.post("/", async function (req, res, next) {
@@ -11,20 +14,25 @@ loginRouter.post("/", async function (req, res, next) {
 
   const body = { username, password };
 
-  const token = await fetch(`${constants["login-service"]}/api/v1/login`, {
-    method: "POST",
-    body: JSON.stringify(body),
-    headers: {
-      "Content-Type": "application/json",
+  const loginResponse = await fetch(
+    `${constants["login-service"]}/api/v1/login`,
+    {
+      method: "POST",
+      body: JSON.stringify(body),
+      headers: {
+        "Content-Type": "application/json",
+      },
     },
-  })
+  )
     .then((res) => res.json())
     .then((json) => {
       console.log(json);
-      return json;
+      return json as LoginResponseFull;
     });
 
-  return res.send({ token });
+  let sessionInfo = sessionManager.handleLogin(loginResponse);
+
+  return res.send({ sessionInfo });
 });
 
 export default loginRouter;
