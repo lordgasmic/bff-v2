@@ -5,6 +5,7 @@ import express from "express";
 import indexRouter from "./routes/index.js";
 import usersRouter from "./routes/users.js";
 import loginRouter from "./routes/login.js";
+import sessionRouter from "./routes/session.js";
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/api/v1/login", loginRouter);
+app.use("/api/v1/session", sessionRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
