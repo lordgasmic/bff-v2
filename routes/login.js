@@ -11,13 +11,15 @@ loginRouter.post("/", function (req, res, next) {
 
   const body = { username, password };
 
-  return fetch(`${constants["login-service"]}/api/v1/login`, {
+  const token = fetch(`${constants["login-service"]}/api/v1/login`, {
     method: "POST",
     body: JSON.stringify(body),
     headers: {
       "Content-Type": "application/json",
     },
   }).then((res) => res.json().then((data) => data.token));
+
+  return res.send({ token });
 });
 
 export default loginRouter;
