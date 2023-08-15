@@ -6,7 +6,7 @@ const loginRouter = express.Router();
 
 /* GET users listing. */
 loginRouter.post("/", function (req, res, next) {
-  return fetch(constants["login-client"], {
+  return fetch(constants["login-service"], {
     method: "POST",
     body: req.body,
   })
