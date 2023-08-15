@@ -5,4 +5,5 @@ RUN npm ci --omit=dev
 COPY . .
 EXPOSE 8080
 ENV NODE_ENV=production
+ENV PORT=8080
 ENTRYPOINT ["node", "bin/www"]
