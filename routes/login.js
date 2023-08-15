@@ -9,11 +9,9 @@ loginRouter.post("/", function (req, res, next) {
   const username = req.body.username;
   const password = req.body.password;
 
-  console.log(username);
-
   return fetch(`${constants["login-service"]}/api/v1/login`, {
     method: "POST",
-    body: { username, password },
+    body: JSON.stringify({ username, password }),
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
