@@ -5,19 +5,24 @@ import express from "express";
 const loginRouter = express.Router();
 
 /* GET users listing. */
-loginRouter.post("/", function (req, res, next) {
+loginRouter.post("/", async function (req, res, next) {
   const username = req.body.username;
   const password = req.body.password;
 
   const body = { username, password };
 
-  const token = fetch(`${constants["login-service"]}/api/v1/login`, {
+  const token = await fetch(`${constants["login-service"]}/api/v1/login`, {
     method: "POST",
     body: JSON.stringify(body),
     headers: {
       "Content-Type": "application/json",
     },
-  }).then((res) => res.json().then((data) => data.token));
+  })
+    .then((res) => res.json())
+    .then((json) => {
+      console.log(json);
+      return json;
+    });
 
   return res.send({ token });
 });
