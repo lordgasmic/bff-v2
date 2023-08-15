@@ -1,7 +1,8 @@
 FROM node:16.16.0-alpine
-WORKDIR /app
-COPY . .
+WORKDIR /usr/src/app
+COPY package*.json ./
 RUN npm ci --omit=dev
-EXPOSE 80
+COPY . .
+EXPOSE 8080
 ENV NODE_ENV=production
-CMD ["node", "bin/www"]
+ENTRYPOINT ["node", "bin/www"]
