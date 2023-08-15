@@ -6,4 +6,4 @@ COPY . .
 EXPOSE 8080
 ENV NODE_ENV=production
 ENV PORT=8080
-ENTRYPOINT ["node", "bin/www"]
+ENTRYPOINT ["node", "bin/www.js"]

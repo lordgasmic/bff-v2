@@ -1,11 +1,11 @@
 import fetch from "node-fetch";
-import constants from "../constsants";
+import constants from "../constsants.js";
+import express from "express";
 
-const express = require("express");
-const router = express.Router();
+const loginRouter = express.Router();
 
 /* GET users listing. */
-router.get("/", function (req, res, next) {
+loginRouter.get("/", function (req, res, next) {
   return fetch(constants["login-client"], {
     method: "POST",
     body: req.body,
@@ -14,4 +14,4 @@ router.get("/", function (req, res, next) {
     .then((data) => data.token);
 });
 
-module.exports = router;
+export default loginRouter;

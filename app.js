@@ -1,10 +1,10 @@
-const createError = require("http-errors");
-const express = require("express");
-const path = require("path");
+import createError from "http-errors";
 
-const indexRouter = require("./routes");
-const usersRouter = require("./routes/users");
-const loginRouter = require("./routes/login");
+import express from "express";
+
+import indexRouter from "./routes/index.js";
+import usersRouter from "./routes/users.js";
+import loginRouter from "./routes/login.js";
 
 const app = express();
 
@@ -31,4 +31,4 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-module.exports = app;
+export default app;
