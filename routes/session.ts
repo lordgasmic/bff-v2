@@ -8,10 +8,13 @@ const sessionManager = SessionManager.Instance;
 sessionRouter.get("/", async function (req, res, next) {
   let tokenHeader = req.get("X-Lordgasmic-Token");
   if (!tokenHeader) {
-    res.send(401, "lgc token not found");
+    res.status(400).send("lgc token not found");
   }
   let login = sessionManager.getSessionInfo(tokenHeader);
-  return res.send(login);
+  if (login) {
+    return res.send({ username: login.username, roles: login.roles });
+  }
+  return res.status(401).send();
 });
 
 export default sessionRouter;

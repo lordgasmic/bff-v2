@@ -6,6 +6,7 @@ import indexRouter from "./routes/index.js";
 import usersRouter from "./routes/users.js";
 import loginRouter from "./routes/login.js";
 import sessionRouter from "./routes/session.js";
+import memeRouter from "./routes/memes.js";
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/api/v1/login", loginRouter);
 app.use("/api/v1/session", sessionRouter);
+app.use("/api/v1/memes", memeRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
