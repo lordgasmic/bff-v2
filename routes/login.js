@@ -6,9 +6,12 @@ const loginRouter = express.Router();
 
 /* GET users listing. */
 loginRouter.post("/", function (req, res, next) {
+  const username = req.body.username;
+  const password = req.body.password;
+
   return fetch(`${constants["login-service"]}/api/v1/login`, {
     method: "POST",
-    body: req.body,
+    body: { username, password },
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
