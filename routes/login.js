@@ -9,6 +9,10 @@ loginRouter.post("/", function (req, res, next) {
   return fetch(`${constants["login-service"]}/api/v1/login`, {
     method: "POST",
     body: req.body,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
   })
     .then((res) => res.json())
     .then((data) => data.token);
