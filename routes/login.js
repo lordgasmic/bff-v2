@@ -17,9 +17,7 @@ loginRouter.post("/", function (req, res, next) {
     headers: {
       "Content-Type": "application/json",
     },
-  })
-    .then((res) => res.json())
-    .then((data) => data.token);
+  }).then((res) => res.json().then((data) => data.token));
 });
 
 export default loginRouter;
