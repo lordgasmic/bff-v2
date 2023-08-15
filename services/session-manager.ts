@@ -22,7 +22,7 @@ export class SessionManager {
   }
 
   public getSessionInfo(tokenHeader: string): LoginResponse {
-    return this.SESSION_MAP.get(tokenHeader).loginResponse;
+    return this.SESSION_MAP.get(tokenHeader)?.loginResponse;
   }
 }
 
