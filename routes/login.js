@@ -5,7 +5,7 @@ import express from "express";
 const loginRouter = express.Router();
 
 /* GET users listing. */
-loginRouter.get("/", function (req, res, next) {
+loginRouter.post("/", function (req, res, next) {
   return fetch(constants["login-client"], {
     method: "POST",
     body: req.body,
