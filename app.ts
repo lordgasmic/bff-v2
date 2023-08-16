@@ -7,6 +7,11 @@ import usersRouter from "./routes/users.js";
 import loginRouter from "./routes/login.js";
 import sessionRouter from "./routes/session.js";
 import memeRouter from "./routes/memes.js";
+import wineriesRouter from "./routes/wineries.js";
+import winesRouter from "./routes/wines.js";
+import wineNotesRouter from "./routes/wineNotes.js";
+import wineRatingRouter from "./routes/wineRating.js";
+import gasRouter from "./routes/gas.js";
 
 const app = express();
 
@@ -24,6 +29,11 @@ app.use("/users", usersRouter);
 app.use("/api/v1/login", loginRouter);
 app.use("/api/v1/session", sessionRouter);
 app.use("/api/v1/memes", memeRouter);
+app.use("/api/v1/wineries", wineriesRouter);
+app.use("/api/v1/wines", winesRouter);
+app.use("/api/v1/wineNotes", wineNotesRouter);
+app.use("/api/v1/wineRating", wineRatingRouter);
+app.use("/api/v1/gas", gasRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
