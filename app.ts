@@ -53,4 +53,6 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
+app.use(app.router);
+
 export default app;
