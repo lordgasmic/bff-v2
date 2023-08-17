@@ -1,13 +1,13 @@
 import fetch from "node-fetch";
 import express from "express";
-import constants from "../constsants.js";
+import { services } from "../constsants.js";
 
 const memeRouter = express.Router();
 
 /* GET users listing. */
 memeRouter.get("/tag/:tag", async function (req, res, next) {
   const memeData = await fetch(
-    `${constants["meme-service"]}/api/v1/memes/tag/${req.params.tag}`,
+    `${services["meme-service"]}/api/v1/memes/tag/${req.params.tag}`,
     {
       method: "GET",
       headers: {
