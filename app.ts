@@ -1,9 +1,6 @@
 import createError from "http-errors";
 import express from "express";
 import cors from "cors";
-
-import indexRouter from "./routes/index.js";
-import usersRouter from "./routes/users.js";
 import loginRouter from "./routes/login.js";
 import sessionRouter from "./routes/session.js";
 import memeRouter from "./routes/memes.js";
@@ -24,12 +21,10 @@ app.use(
   }),
 );
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
 app.use("/api/v1/login", loginRouter);
 app.use("/api/v1/session", sessionRouter);
 app.use("/api/v1/memes", memeRouter);
-app.use("/api/v1/wineries", wineriesRouter);
+app.use("/api/v1/wineries/", wineriesRouter);
 app.use("/api/v1/wines", winesRouter);
 app.use("/api/v1/wineNotes", wineNotesRouter);
 app.use("/api/v1/wineRating", wineRatingRouter);
