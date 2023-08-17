@@ -9,6 +9,7 @@ import winesRouter from "./routes/wines.js";
 import wineNotesRouter from "./routes/wineNotes.js";
 import wineRatingRouter from "./routes/wineRating.js";
 import gasRouter from "./routes/gas.js";
+import usersRouter from "./routes/users.js";
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(
 );
 
 app.use("/api/v1/login", loginRouter);
+app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/session", sessionRouter);
 app.use("/api/v1/memes", memeRouter);
 app.use("/api/v1/wineries/", wineriesRouter);
@@ -33,6 +35,11 @@ app.use("/api/v1/gas", gasRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
+});
+
+app.use(function (req, res, next) {
+  console.log("erry time");
+  next();
 });
 
 // error handler
