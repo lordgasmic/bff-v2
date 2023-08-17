@@ -26,7 +26,7 @@ app.use("/api/v1/login", loginRouter);
 app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/session", sessionRouter);
 app.use("/api/v1/memes", memeRouter);
-app.use("/api/v1/wineries/", wineriesRouter);
+app.use("/api/v1/wineries", wineriesRouter);
 app.use("/api/v1/wines", winesRouter);
 app.use("/api/v1/wineNotes", wineNotesRouter);
 app.use("/api/v1/wineRating", wineRatingRouter);
@@ -37,7 +37,7 @@ app.use(function (req, res, next) {
   next(createError(404));
 });
 
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
   console.log("erry time");
   next();
 });

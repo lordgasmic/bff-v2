@@ -5,11 +5,27 @@ import { services } from "../constsants.js";
 const winesRouter = express.Router();
 
 winesRouter.get("/", async function (req, res, next) {
-  let wineId = req.query.wineId || "";
-  let wineryId = req.query.wineryId || "";
+  let wineId = req.query.wineId;
+  let wineryId = req.query.wineryId;
+
+  let queryParams = "";
+  if (wineId) {
+    queryParams += `wineId=${wineId}`;
+  }
+
+  if (wineryId) {
+    if (queryParams) {
+      queryParams += "&";
+    }
+    queryParams += `wineryId=${wineryId}`;
+  }
+
+  if (queryParams) {
+    queryParams = "?" + queryParams;
+  }
 
   const response = await fetch(
-    `${services["collection-service"]}/api/v1/wines?wineId=${wineId}&wineryId=${wineryId}`,
+    `${services["collection-service"]}/api/v1/wines${queryParams}`,
     {
       method: "GET",
       headers: {
