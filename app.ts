@@ -22,6 +22,11 @@ app.use(
   }),
 );
 
+app.use((req, res, next) => {
+  console.log("erry time");
+  next();
+});
+
 app.use("/api/v1/login", loginRouter);
 app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/session", sessionRouter);
@@ -37,11 +42,6 @@ app.use(function (req, res, next) {
   next(createError(404));
 });
 
-app.use((req, res, next) => {
-  console.log("erry time");
-  next();
-});
-
 // error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
@@ -52,7 +52,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
-
-app.use(app.router);
 
 export default app;
